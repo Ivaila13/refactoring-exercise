@@ -81,6 +81,15 @@ public class FundingRaised {
 
         return output;
     }
+ private static List<String[]> filterByColumn(List<String[]> data, int columnIndex, String filterValue) {
+        List<String[]> results = new ArrayList<>();
+        for (String[] row : data) {
+            if (row[columnIndex].equals(filterValue)) {
+                results.add(row);
+            }
+        }
+        return results;
+    }
 
     public static Map<String, String> findBy(Map<String, String> options) throws IOException, NoSuchEntryException {
         List<String[]> csvData = new ArrayList<String[]>();

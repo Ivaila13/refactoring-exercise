@@ -6,6 +6,26 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FundingRaised {
+     private static final int PERMALINK_COLUMN = 0;
+    private static final int COMPANY_NAME_COLUMN = 1;
+    private static final int NUMBER_EMPLOYEES_COLUMN = 2;
+    private static final int CATEGORY_COLUMN = 3;
+    private static final int CITY_COLUMN = 4;
+    private static final int STATE_COLUMN = 5;
+    private static final int FUNDED_DATE_COLUMN = 6;
+    private static final int RAISED_AMOUNT_COLUMN = 7;
+    private static final int RAISED_CURRENCY_COLUMN = 8;
+    private static final int ROUND_COLUMN = 9;
+
+    private static List<String[]> filterByColumn(List<String[]> data, int columnIndex, String filterValue) {
+        List<String[]> results = new ArrayList<>();
+        for (String[] row : data) {
+            if (row[columnIndex].equals(filterValue)) {
+                results.add(row);
+            }
+        }
+        return results;
+    }
     public static List<Map<String, String>> findByCriteria(Map<String, String> options) throws IOException {
         List<String[]> fundingData = new ArrayList<String[]>();
         CSVReader reader = new CSVReader(new FileReader("startup_funding.csv"));
